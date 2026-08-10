@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { ProductCard } from "@/components/site/ProductCard";
-import { CatalogFilters } from "@/components/site/CatalogFilters";
+import { ProdutosCatalogo } from "@/components/site/ProdutosCatalogo";
 import { WhatsAppCTAButton } from "@/components/site/WhatsAppCTAButton";
 import { SmartImage } from "@/components/site/SmartImage";
 import { CtaFundo } from "@/components/site/CtaFundo";
@@ -95,7 +94,8 @@ export default async function ProdutosPage({
 
       <section className="bg-white">
         <div className="max-w-[1280px] mx-auto px-6 py-16 flex flex-col lg:flex-row gap-10">
-          <CatalogFilters
+          <ProdutosCatalogo
+            produtos={filtrados}
             linhas={linhaFacets}
             categorias={categoriaFacets}
             grupos={grupoFacets}
@@ -103,22 +103,6 @@ export default async function ProdutosPage({
             activeCategoria={activeCategoria}
             activeGrupo={activeGrupo}
           />
-
-          <div className="flex-1">
-            {filtrados.length > 0 ? (
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
-                {filtrados.map((produto) => (
-                  <ProductCard key={produto.id} produto={produto} />
-                ))}
-              </div>
-            ) : (
-              <div className="border border-dashed border-r3-borderMuted py-20 text-center">
-                <p className="text-[15px] text-r3-muted">
-                  Nenhum produto encontrado com esses filtros.
-                </p>
-              </div>
-            )}
-          </div>
         </div>
       </section>
 

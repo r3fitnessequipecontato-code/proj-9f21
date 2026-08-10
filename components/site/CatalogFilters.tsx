@@ -111,7 +111,7 @@ export function CatalogFilters({
   const hasFilters = Boolean(activeLinha || activeCategoria || activeGrupo);
 
   return (
-    <aside className="lg:w-[260px] flex-shrink-0 space-y-8">
+    <>
       <FacetList
         title="Linha"
         options={linhas}
@@ -141,6 +141,6 @@ export function CatalogFilters({
           Limpar filtros
         </Link>
       )}
-    </aside>
+    </>
   );
 }
