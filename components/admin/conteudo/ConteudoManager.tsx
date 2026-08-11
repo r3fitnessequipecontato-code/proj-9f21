@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Monitor, Smartphone } from "lucide-react";
+import { Switch } from "@/components/admin/Switch";
 import { SingleImageUploader } from "@/components/admin/SingleImageUploader";
 import {
   SalvarAlteracaoButton,
@@ -11,7 +12,7 @@ import { atualizarConteudoVarios } from "@/lib/actions/admin-conteudo";
 
 interface ConteudoRow {
   chave: string;
-  tipo: "imagem" | "texto";
+  tipo: "imagem" | "texto" | "toggle";
   valor: string | null;
   descricao: string | null;
 }
@@ -160,6 +161,33 @@ function BlocoTexto({ row }: { row: ConteudoRow }) {
   );
 }
 
+/** Bloco de liga/desliga (sim/não), salvo como "true"/"false" em texto. */
+function BlocoToggle({ row }: { row: ConteudoRow }) {
+  const bloco = useBlocoSalvavel([row]);
+  const ligado = bloco.rascunho[row.chave] !== "false";
+
+  return (
+    <div className="mb-7 max-w-[520px]">
+      <div className="flex items-center gap-3">
+        <Switch
+          checked={ligado}
+          onChange={(next) => bloco.alterar(row.chave, next ? "true" : "false")}
+          label={row.descricao ?? row.chave}
+        />
+        <span className="text-[13px] text-admin-text">
+          {row.descricao ?? row.chave}
+        </span>
+      </div>
+      <BarraSalvar
+        pendente={bloco.pendente}
+        estado={bloco.estado}
+        erro={bloco.erro}
+        onSalvar={bloco.salvar}
+      />
+    </div>
+  );
+}
+
 function SecaoTextos({ titulo, rows }: { titulo: string; rows: ConteudoRow[] }) {
   if (rows.length === 0) return null;
   return (
@@ -167,9 +195,13 @@ function SecaoTextos({ titulo, rows }: { titulo: string; rows: ConteudoRow[] }) 
       <h2 className="font-mono font-bold text-[13px] uppercase tracking-[.06em] text-admin-text mb-5">
         {titulo}
       </h2>
-      {rows.map((row) => (
-        <BlocoTexto key={row.chave} row={row} />
-      ))}
+      {rows.map((row) =>
+        row.tipo === "toggle" ? (
+          <BlocoToggle key={row.chave} row={row} />
+        ) : (
+          <BlocoTexto key={row.chave} row={row} />
+        ),
+      )}
     </div>
   );
 }
@@ -410,6 +442,7 @@ export function ConteudoManager({ rows }: { rows: ConteudoRow[] }) {
     "cta_topo_mensagem",
     "whatsapp_numero",
     "whatsapp_fab_mensagem",
+    "whatsapp_fab_ativo",
   ]);
 
   const redes = pegar(["instagram_url", "youtube_url"]);

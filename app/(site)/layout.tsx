@@ -49,7 +49,7 @@ export default async function SiteLayout({
           instagramUrl={conteudo.instagram_url}
           youtubeUrl={conteudo.youtube_url}
         />
-        <WhatsAppFAB />
+        {conteudo.whatsapp_fab_ativo !== "false" && <WhatsAppFAB />}
       </CartProvider>
     </SiteConfigProvider>
   );
