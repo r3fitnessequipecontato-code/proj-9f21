@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Garantia e Assistência",
   description:
     "Condições de garantia de fábrica e assistência técnica dos equipamentos R3 Fitness.",
+  alternates: { canonical: "/politicas/garantia" },
 };
 
 export default async function GarantiaPage() {

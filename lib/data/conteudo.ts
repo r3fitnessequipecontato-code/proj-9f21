@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/public";
 
 export async function getConteudoSiteMap(): Promise<Record<string, string | null>> {
   const supabase = await createClient();

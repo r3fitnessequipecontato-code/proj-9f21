@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Reembolso e Devoluções",
   description:
     "Condições para devolução de equipamentos e prazos de reembolso da R3 Fitness.",
+  alternates: { canonical: "/politicas/devolucao" },
 };
 
 export default async function DevolucaoPage() {

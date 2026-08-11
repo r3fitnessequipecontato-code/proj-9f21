@@ -5,6 +5,7 @@ import { getConteudoSiteMap } from "@/lib/data/conteudo";
 export const metadata: Metadata = {
   title: "Termos de Uso",
   description: "Termos e condições de uso do site e da loja R3 Fitness.",
+  alternates: { canonical: "/politicas/termos" },
 };
 
 export default async function TermosPage() {

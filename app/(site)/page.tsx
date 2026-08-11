@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Truck, ShieldCheck, CreditCard, Headset } from "lucide-react";
 import { SmartImage } from "@/components/site/SmartImage";
@@ -9,6 +10,10 @@ import { getLinhasHome } from "@/lib/data/linhas";
 import { getProdutosDestaque } from "@/lib/data/produtos";
 import { getDepoimentosAprovados } from "@/lib/data/depoimentos";
 import { getConteudoSiteMap } from "@/lib/data/conteudo";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const NUMEROS = [
   { valor: "9 anos", label: "De fabricação própria" },

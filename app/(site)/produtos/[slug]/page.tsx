@@ -8,10 +8,23 @@ import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { AddToCartButton } from "@/components/site/AddToCartButton";
 import { ProductCard } from "@/components/site/ProductCard";
 import { ProdutoViewTracker } from "@/components/site/ProdutoViewTracker";
-import { getProdutoBySlug, getProdutosRelacionados } from "@/lib/data/produtos";
+import {
+  getProdutoBySlug,
+  getProdutosAtivos,
+  getProdutosRelacionados,
+} from "@/lib/data/produtos";
 
 interface Props {
   params: Promise<{ slug: string }>;
+}
+
+// Sem isso, o Next não sabe quais slugs existem em build time e renderiza
+// cada página de produto sob demanda a cada request (ƒ), mesmo com
+// revalidate configurado no layout. Com generateStaticParams, todo produto
+// vira página estática com ISR de verdade.
+export async function generateStaticParams() {
+  const produtos = await getProdutosAtivos();
+  return produtos.map((produto) => ({ slug: produto.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -24,6 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description:
       produto.descricao ??
       `${produto.nome} — equipamento profissional R3 Fitness para academias.`,
+    alternates: { canonical: `/produtos/${produto.slug}` },
   };
 }
 

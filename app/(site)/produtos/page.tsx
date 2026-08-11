@@ -7,12 +7,13 @@ import { getProdutosAtivos, getGruposDosProdutos } from "@/lib/data/produtos";
 import { getLinhas } from "@/lib/data/linhas";
 import { getCategorias } from "@/lib/data/categorias";
 import { getConteudoSiteMap } from "@/lib/data/conteudo";
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/public";
 
 export const metadata: Metadata = {
   title: "Produtos",
   description:
     "Catálogo completo de equipamentos R3 Fitness: cardio, articulados, pesos livres e acessórios para academias.",
+  alternates: { canonical: "/produtos" },
 };
 
 export default async function ProdutosPage({

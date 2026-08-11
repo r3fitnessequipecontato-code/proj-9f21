@@ -5,6 +5,7 @@ import { getConteudoSiteMap } from "@/lib/data/conteudo";
 export const metadata: Metadata = {
   title: "Política de Privacidade",
   description: "Como a R3 Fitness coleta, usa e protege seus dados pessoais.",
+  alternates: { canonical: "/politicas/privacidade" },
 };
 
 export default async function PrivacidadePage() {

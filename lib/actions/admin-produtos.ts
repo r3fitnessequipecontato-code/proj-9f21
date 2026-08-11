@@ -54,6 +54,7 @@ export async function criarProduto(input: ProdutoInput) {
   await sincronizarGrupos(data.id, input.grupoIds);
 
   revalidatePath("/admin/produtos");
+  revalidatePath("/", "layout");
   redirect("/admin/produtos");
 }
 
@@ -80,6 +81,7 @@ export async function atualizarProduto(id: string, input: ProdutoInput) {
   await sincronizarGrupos(id, input.grupoIds);
 
   revalidatePath("/admin/produtos");
+  revalidatePath("/", "layout");
   redirect("/admin/produtos");
 }
 
@@ -88,6 +90,7 @@ export async function toggleProdutoAtivo(id: string, ativo: boolean) {
   const { error } = await supabase.from("produtos").update({ ativo }).eq("id", id);
   if (error) throw new Error(error.message);
   revalidatePath("/admin/produtos");
+  revalidatePath("/", "layout");
 }
 
 export async function toggleProdutoDestaque(id: string, destaque: boolean) {
@@ -98,6 +101,7 @@ export async function toggleProdutoDestaque(id: string, destaque: boolean) {
     .eq("id", id);
   if (error) throw new Error(error.message);
   revalidatePath("/admin/produtos");
+  revalidatePath("/", "layout");
 }
 
 export async function excluirProduto(id: string) {
@@ -105,4 +109,5 @@ export async function excluirProduto(id: string) {
   const { error } = await supabase.from("produtos").delete().eq("id", id);
   if (error) throw new Error(error.message);
   revalidatePath("/admin/produtos");
+  revalidatePath("/", "layout");
 }

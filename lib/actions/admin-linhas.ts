@@ -27,6 +27,7 @@ export async function criarLinha(input: LinhaInput) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/linhas");
+  revalidatePath("/", "layout");
   redirect("/admin/linhas");
 }
 
@@ -46,6 +47,7 @@ export async function atualizarLinha(id: string, input: LinhaInput) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/linhas");
+  revalidatePath("/", "layout");
   redirect("/admin/linhas");
 }
 
@@ -58,6 +60,7 @@ export async function toggleLinhaExibirHome(id: string, exibirHome: boolean) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/linhas");
+  revalidatePath("/", "layout");
 }
 
 export async function excluirLinha(id: string) {
@@ -66,4 +69,5 @@ export async function excluirLinha(id: string) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/linhas");
+  revalidatePath("/", "layout");
 }

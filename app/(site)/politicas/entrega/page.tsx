@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Entrega e Montagem",
   description:
     "Como funciona a entrega e a montagem dos equipamentos R3 Fitness em todo o Brasil.",
+  alternates: { canonical: "/politicas/entrega" },
 };
 
 export default async function EntregaPage() {

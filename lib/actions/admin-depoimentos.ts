@@ -26,6 +26,7 @@ export async function criarDepoimento(input: DepoimentoInput) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/depoimentos");
+  revalidatePath("/", "layout");
   redirect("/admin/depoimentos");
 }
 
@@ -45,6 +46,7 @@ export async function atualizarDepoimento(id: string, input: DepoimentoInput) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/depoimentos");
+  revalidatePath("/", "layout");
   redirect("/admin/depoimentos");
 }
 
@@ -57,6 +59,7 @@ export async function toggleDepoimentoAprovado(id: string, aprovado: boolean) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/depoimentos");
+  revalidatePath("/", "layout");
 }
 
 export async function excluirDepoimento(id: string) {
@@ -65,4 +68,5 @@ export async function excluirDepoimento(id: string) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/depoimentos");
+  revalidatePath("/", "layout");
 }

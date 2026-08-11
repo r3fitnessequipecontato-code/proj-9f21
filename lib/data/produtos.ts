@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/public";
 import type { ProdutoComRelacoes, ProdutoDetalhado } from "@/lib/types";
 
 const PRODUTO_SELECT = `

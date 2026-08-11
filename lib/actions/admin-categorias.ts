@@ -25,6 +25,7 @@ export async function criarCategoria(input: CategoriaInput) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/categorias");
+  revalidatePath("/", "layout");
   redirect("/admin/categorias");
 }
 
@@ -43,6 +44,7 @@ export async function atualizarCategoria(id: string, input: CategoriaInput) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/categorias");
+  revalidatePath("/", "layout");
   redirect("/admin/categorias");
 }
 
@@ -58,6 +60,7 @@ export async function toggleCategoriaExibirHome(
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/categorias");
+  revalidatePath("/", "layout");
 }
 
 export async function excluirCategoria(id: string) {
@@ -66,4 +69,5 @@ export async function excluirCategoria(id: string) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/categorias");
+  revalidatePath("/", "layout");
 }

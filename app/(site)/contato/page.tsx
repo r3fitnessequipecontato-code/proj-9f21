@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { ContatoForm } from "@/components/site/ContatoForm";
 import { SmartImage } from "@/components/site/SmartImage";
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
   title: "Contato",
   description:
     "Receba um projeto sob medida de equipamentos para academia. Fale com a R3 Fitness por WhatsApp, e-mail ou formulário.",
+  alternates: { canonical: "/contato" },
 };
 
 const BENEFICIOS = [
@@ -52,7 +54,9 @@ export default async function ContatoPage() {
       <section className="bg-white">
         <div className="max-w-[1280px] mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12">
           <div>
-            <ContatoForm />
+            <Suspense fallback={null}>
+              <ContatoForm />
+            </Suspense>
           </div>
 
           <div className="space-y-6">

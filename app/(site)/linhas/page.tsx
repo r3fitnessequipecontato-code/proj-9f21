@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Linhas",
   description:
     "Conheça as linhas de equipamentos R3 Fitness: uma linha para cada projeto de academia.",
+  alternates: { canonical: "/linhas" },
 };
 
 export default async function LinhasPage() {

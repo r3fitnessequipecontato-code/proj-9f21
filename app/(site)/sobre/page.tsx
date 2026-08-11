@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Sobre",
   description:
     "9 anos fabricando equipamentos de academia no Brasil. Conheça a história, o processo de fabricação e a equipe da R3 Fitness.",
+  alternates: { canonical: "/sobre" },
 };
 
 const PROCESSO = [

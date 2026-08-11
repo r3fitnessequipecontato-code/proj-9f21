@@ -32,6 +32,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.r3fitness.com.br"),
   title: {
     default: "R3 Fitness — Equipamentos que constroem academias fortes",
     template: "%s | R3 Fitness",

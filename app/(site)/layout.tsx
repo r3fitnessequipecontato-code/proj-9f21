@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Topbar } from "@/components/site/Topbar";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -10,6 +11,13 @@ import type { Metadata } from "next";
 import { getIntegracoes } from "@/lib/data/integracoes";
 import { getConteudoSiteMap } from "@/lib/data/conteudo";
 import { getLinhas } from "@/lib/data/linhas";
+
+// ISR: as leituras públicas (lib/data/*) não usam mais cookies(), então as
+// páginas do site podem ser cacheadas em vez de renderizar 100% dinâmico a
+// cada visita. As actions de admin chamam revalidatePath("/", "layout")
+// depois de qualquer escrita, então esse teto de 1h é só um limite de
+// segurança — na prática a atualização é imediata.
+export const revalidate = 3600;
 
 // Imagem exibida ao compartilhar qualquer página do site (WhatsApp, redes
 // sociais). Cadastrada em Conteúdo do Site.
@@ -39,7 +47,9 @@ export default async function SiteLayout({
     <SiteConfigProvider value={conteudo}>
       <CartProvider>
         <IntegracoesScripts data={integracoes} />
-        <PixelRouteTracker />
+        <Suspense fallback={null}>
+          <PixelRouteTracker />
+        </Suspense>
         <Topbar />
         <Header
           linhas={linhas.map((l) => ({ id: l.id, nome: l.nome, slug: l.slug }))}

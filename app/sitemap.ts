@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getProdutosAtivos } from "@/lib/data/produtos";
 
-const BASE_URL = "https://r3fitness.com.br";
+const BASE_URL = "https://www.r3fitness.com.br";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const produtos = await getProdutosAtivos();

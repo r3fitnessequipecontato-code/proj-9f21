@@ -5,6 +5,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       { userAgent: "*", allow: "/", disallow: "/admin" },
     ],
-    sitemap: "https://r3fitness.com.br/sitemap.xml",
+    sitemap: "https://www.r3fitness.com.br/sitemap.xml",
   };
 }

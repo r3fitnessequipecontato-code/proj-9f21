@@ -9,6 +9,7 @@ export async function criarGrupoMuscular(nome: string) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/grupos-musculares");
+  revalidatePath("/", "layout");
 }
 
 export async function atualizarGrupoMuscular(id: string, nome: string) {
@@ -20,6 +21,7 @@ export async function atualizarGrupoMuscular(id: string, nome: string) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/grupos-musculares");
+  revalidatePath("/", "layout");
 }
 
 export async function excluirGrupoMuscular(id: string) {
@@ -31,4 +33,5 @@ export async function excluirGrupoMuscular(id: string) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/grupos-musculares");
+  revalidatePath("/", "layout");
 }
