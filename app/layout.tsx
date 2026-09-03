@@ -39,6 +39,11 @@ export const metadata: Metadata = {
   },
   description:
     "Fabricação própria de equipamentos para academias: linhas Excellence, Overall, Body Line e New Shape. Entrega e montagem para todo o Brasil.",
+  verification: {
+    other: {
+      "facebook-domain-verification": "6tjvtnwgpiqeaev3s1yj2ktltsbr5t",
+    },
+  },
 };
 
 export default function RootLayout({
