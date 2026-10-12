@@ -22,15 +22,10 @@ export default function ObrigadoPage() {
   }, []);
 
   return (
-    <head> <!-- Google tag (gtag.js) -->
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-18487072475"></Script>
-      <Script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-      
-        gtag('config', 'AW-18487072475');
-        </Script> 
+    <head> 
+        <Script>
+          gtag('event', 'conversion', {'send_to': 'AW-18487072475/ga_zCJz-_pYdENutqe9E'});
+        </Script>
     </head>
     <section className="bg-white">
       <div className="max-w-[560px] mx-auto px-6 py-24 text-center">
