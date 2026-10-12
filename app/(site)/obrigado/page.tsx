@@ -21,6 +21,16 @@ export default function ObrigadoPage() {
   }, []);
 
   return (
+    <head> <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18487072475"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'AW-18487072475');
+        </script> 
+    </head>
     <section className="bg-white">
       <div className="max-w-[560px] mx-auto px-6 py-24 text-center">
         <CheckCircle2 size={48} strokeWidth={1.4} className="mx-auto text-accent" />
