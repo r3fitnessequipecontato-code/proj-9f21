@@ -69,6 +69,11 @@ export default function RootLayout({
 
             /* Google Ads */
             gtag('config', 'AW-18487072475');
+            
+            <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFZ5N9K6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
           `}
         </Script>
       </body>
