@@ -8,30 +8,16 @@ import { WhatsAppCTAButton } from "@/components/site/WhatsAppCTAButton";
 declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void;
-    dataLayer?: Record<string, unknown>[];
+    dataLayer?: unknown[];
   }
 }
 
 export default function ObrigadoPage() {
   useEffect(() => {
-    /* ==========================================
-       META PIXEL
-       Lead concluído
-       ========================================== */
-
+    /* META PIXEL */
     window.fbq?.("track", "Lead");
 
-
-    /* ==========================================
-       GOOGLE TAG MANAGER
-
-       Este evento é enviado ao dataLayer quando
-       a página /obrigado é carregada.
-
-       O GTM deve usar "r3_lead_concluido"
-       como Evento Personalizado.
-       ========================================== */
-
+    /* GOOGLE TAG MANAGER */
     window.dataLayer = window.dataLayer ?? [];
 
     window.dataLayer.push({
@@ -40,7 +26,6 @@ export default function ObrigadoPage() {
       event_source: "pagina_obrigado",
       page_path: "/obrigado",
     });
-
   }, []);
 
   return (
