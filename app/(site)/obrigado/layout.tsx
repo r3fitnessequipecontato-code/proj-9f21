@@ -14,27 +14,5 @@ export default function ObrigadoLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      {/* Google Ads - conversão da página /obrigado */}
-      <Script
-        id="google-ads-conversion-obrigado"
-        strategy="afterInteractive"
-      >
-        {`
-          window.dataLayer = window.dataLayer || [];
+  return 
 
-          function gtag() {
-            dataLayer.push(arguments);
-          }
-
-          gtag('event', 'conversion', {
-            'send_to': 'AW-18487072475/ga_zCJz-_pYdENutqe9E'
-          });
-        `}
-      </Script>
-
-      {children}
-    </>
-  );
-}
