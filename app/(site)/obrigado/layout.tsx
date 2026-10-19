@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Pedido recebido",
-  robots: {
-    index: false,
-    follow: true,
-  },
+  robots: { index: false, follow: true },
 };
 
 export default function ObrigadoLayout({
@@ -14,5 +10,14 @@ export default function ObrigadoLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return 
+  return children;
+}
+import Script from "next/script";
 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="pt-BR">
