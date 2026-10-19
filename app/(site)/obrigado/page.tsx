@@ -8,14 +8,7 @@ import { WhatsAppCTAButton } from "@/components/site/WhatsAppCTAButton";
 declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void;
-
-    dataLayer?: unknown[];
-
-    gtag?: (
-      command: string,
-      action: string,
-      params?: Record<string, unknown>
-    ) => void;
+    dataLayer?: Record<string, unknown>[];
   }
 }
 
@@ -23,32 +16,31 @@ export default function ObrigadoPage() {
   useEffect(() => {
     /* ==========================================
        META PIXEL
+       Lead concluído
        ========================================== */
 
     window.fbq?.("track", "Lead");
 
 
     /* ==========================================
-       GOOGLE ANALYTICS 4
-       G-XZ613V97WK
+       GOOGLE TAG MANAGER
+
+       Este evento é enviado ao dataLayer quando
+       a página /obrigado é carregada.
+
+       O GTM deve usar "r3_lead_concluido"
+       como Evento Personalizado.
        ========================================== */
 
-    window.gtag?.("event", "generate_lead", {
-      send_to: "G-XZ613V97WK",
+    window.dataLayer = window.dataLayer ?? [];
+
+    window.dataLayer.push({
+      event: "r3_lead_concluido",
+      event_category: "lead",
+      event_source: "pagina_obrigado",
+      page_path: "/obrigado",
     });
 
-
-    /* ==========================================
-       GOOGLE ADS
-       Conversão da página /obrigado
-
-       Snippet fornecido pelo Google:
-       AW-18487072475/ga_zCJz-_pYdENutqe9E
-       ========================================== */
-
-    window.gtag?.("event", "conversion", {
-      send_to: "AW-18487072475/ga_zCJz-_pYdENutqe9E",
-    });
   }, []);
 
   return (
