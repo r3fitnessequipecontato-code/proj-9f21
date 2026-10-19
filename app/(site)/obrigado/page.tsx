@@ -22,3 +22,8 @@ export default function ObrigadoPage() {
   }, []);
 
   return 
+<head><!-- Event snippet for Visualização de página conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-18487072475/ga_zCJz-_pYdENutqe9E'});
+</script>
+</head>
