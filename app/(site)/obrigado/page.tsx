@@ -9,15 +9,23 @@ declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void;
     dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
 export default function ObrigadoPage() {
   useEffect(() => {
-    /* META PIXEL */
+    /* =====================================================
+       META PIXEL
+       ===================================================== */
+
     window.fbq?.("track", "Lead");
 
-    /* GOOGLE TAG MANAGER */
+
+    /* =====================================================
+       GOOGLE TAG MANAGER / DATA LAYER
+       ===================================================== */
+
     window.dataLayer = window.dataLayer ?? [];
 
     window.dataLayer.push({
@@ -26,6 +34,30 @@ export default function ObrigadoPage() {
       event_source: "pagina_obrigado",
       page_path: "/obrigado",
     });
+
+
+    /* =====================================================
+       GOOGLE ADS
+       Snippet oficial da página de conversão.
+
+       O script abaixo é inserido diretamente no <head>
+       da página /obrigado.
+       ===================================================== */
+
+    const scriptId = "google-ads-conversion-obrigado";
+
+    if (!document.getElementById(scriptId)) {
+      const script = document.createElement("script");
+
+      script.id = scriptId;
+
+      script.textContent = `
+gtag('event', 'conversion', {'send_to': 'AW-18487072475/ga_zCJz-_pYdENutqe9E'});
+`;
+
+      document.head.appendChild(script);
+    }
+
   }, []);
 
   return (
