@@ -32,12 +32,15 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.r3fitness.com.br"),
+
   title: {
     default: "R3 Fitness — Equipamentos que constroem academias fortes",
     template: "%s | R3 Fitness",
   },
+
   description:
     "Fabricação própria de equipamentos para academias: linhas Excellence, Overall, Body Line e New Shape. Entrega e montagem para todo o Brasil.",
+
   verification: {
     other: {
       "facebook-domain-verification": "6tjvtnwgpiqeaev3s1yj2ktltsbr5t",
@@ -56,7 +59,11 @@ export default function RootLayout({
       className={`${oswald.variable} ${barlow.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <head>
-        {/* Google tag (gtag.js) */}
+        {/* =====================================================
+            GOOGLE TAG (gtag.js)
+            Google Ads: AW-18487072475
+            ===================================================== */}
+
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-18487072475"
@@ -65,23 +72,47 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
 
-  gtag('config', 'AW-18487072475');
+gtag('config', 'AW-18487072475');
+`,
+          }}
+        />
+
+        {/* =====================================================
+            GOOGLE TAG MANAGER
+            GTM-MFZ5N9K6
+            ===================================================== */}
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MFZ5N9K6');
 `,
           }}
         />
       </head>
 
       <body className="font-barlow bg-white text-r3-heading antialiased">
+        {/* =====================================================
+            GOOGLE TAG MANAGER (noscript)
+            ===================================================== */}
+
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-MFZ5N9K6"
             height="0"
             width="0"
-            style={{ display: "none", visibility: "hidden" }}
+            style={{
+              display: "none",
+              visibility: "hidden",
+            }}
           />
         </noscript>
 
