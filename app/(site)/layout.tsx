@@ -1,3 +1,5 @@
+
+
 import { Suspense } from "react";
 import { Topbar } from "@/components/site/Topbar";
 import { Header } from "@/components/site/Header";
@@ -52,6 +54,28 @@ export default async function SiteLayout({
         </Suspense>
         <Topbar />
         <Header
+
+          <head>
+  {/* Google tag (gtag.js) */}
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=AW-18487072475"
+  />
+
+  <script
+    dangerouslySetInnerHTML={{
+      __html: `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18487072475');
+`,
+    }}
+  />
+
+  {/* o restante do seu head continua aqui */}
+</head>
           linhas={linhas.map((l) => ({ id: l.id, nome: l.nome, slug: l.slug }))}
         />
         <main>{children}</main>
@@ -64,3 +88,5 @@ export default async function SiteLayout({
     </SiteConfigProvider>
   );
 }
+
+
