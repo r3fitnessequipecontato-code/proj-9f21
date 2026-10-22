@@ -54,8 +54,7 @@ export default async function SiteLayout({
         </Suspense>
         <Topbar />
         <Header
-          
-          <head>
+    
         
   
           linhas={linhas.map((l) => ({ id: l.id, nome: l.nome, slug: l.slug }))}
