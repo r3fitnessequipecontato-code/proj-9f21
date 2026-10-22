@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Oswald, Barlow, Inter, JetBrains_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const oswald = Oswald({
@@ -57,18 +56,25 @@ export default function RootLayout({
       className={`${oswald.variable} ${barlow.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <head>
-        <Script <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18487072475">
-</script>
-<script>
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18487072475"
+        ></script>
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'AW-18487072475');
-
-        </Script>
+`,
+          }}
+        />
       </head>
+
       <body className="font-barlow bg-white text-r3-heading antialiased">
         <noscript>
           <iframe
@@ -78,6 +84,7 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+
         {children}
       </body>
     </html>
