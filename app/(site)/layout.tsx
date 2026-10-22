@@ -54,9 +54,7 @@ export default async function SiteLayout({
         </Suspense>
         <Topbar />
         <Header
-
-          <head>
-  {/* Google tag (gtag.js) */}
+          {/* Google tag (gtag.js) */}
   <script
     async
     src="https://www.googletagmanager.com/gtag/js?id=AW-18487072475"
@@ -76,6 +74,9 @@ export default async function SiteLayout({
 
   {/* o restante do seu head continua aqui */}
 </head>
+
+          <head>
+  
           linhas={linhas.map((l) => ({ id: l.id, nome: l.nome, slug: l.slug }))}
         />
         <main>{children}</main>
