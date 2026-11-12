@@ -10,6 +10,11 @@ const nextConfig = {
   // standalone build aninhado em Documents/r3/Site/Novo/ em vez da raiz.
   outputFileTracingRoot: __dirname,
   basePath: process.env.NEXT_BASE_PATH || undefined,
+  // Página de links da bio (/ViaWhatsapp): aceita qualquer variação de maiúscula/minúscula.
+  // A rota real vem antes (afterFiles), então a regra só pega quem não bateu exato.
+  async rewrites() {
+    return [{ source: "/viawhatsapp", destination: "/ViaWhatsapp" }];
+  },
   images: {
     remotePatterns: [
       {
